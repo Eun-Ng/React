@@ -1,6 +1,6 @@
 # 고양이 짤방 생성기
 
-https://eun-ng-cat-jjal-maker.netlify.app
+[고양이 짤방 생성기](https://eun-ng-cat-jjal-maker.netlify.app){:target="\_blank"}
 
 > 고양이 짤방을 생성하는 리액트 앱입니다.  
 > 리액트 토이 프로젝트입니다.
