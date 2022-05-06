@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import Title from "./components/Title";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const jsonLocalStorage = {
   setItem: (key, value) => {
@@ -62,6 +64,7 @@ const Form = ({updateMainCat}) => {
 function CatItem(props) {
   return (
     <li>
+      <FontAwesomeIcon icon={faXmark} onClick={RemoveFavorites} />
       <img src={props.img} style={{width: "150px"}} />
     </li>
   );
@@ -80,6 +83,8 @@ function Favorites({favorites}) {
     </ul>
   );
 }
+
+function RemoveFavorites({favorites}) {}
 
 const MainCard = ({img, onHeartClick, alreadyFavorite}) => {
   const heartIcon = alreadyFavorite ? "💖" : "🤍";

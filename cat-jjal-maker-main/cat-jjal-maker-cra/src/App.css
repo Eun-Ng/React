@@ -1,11 +1,13 @@
 body {
   text-align: center;
+  box-sizing: border-box;
 }
 
 .main-card button {
   position: relative;
   left: -45px;
   bottom: 15px;
+  cursor: pointer;
 }
 
 .favorites {
@@ -14,4 +16,15 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  position: relative;
+}
+.favorites > li > img {
+  margin-right: 10px;
+}
+
+.svg-inline--fa.fa-xmark {
+  position: absolute;
+  margin-left: -12px;
+  margin-top: -12px;
+  cursor: pointer;
 }
