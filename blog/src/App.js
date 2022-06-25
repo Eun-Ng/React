@@ -10,6 +10,8 @@ function App() {
     '리액트 독학',
   ]);
   let [like, likePlus] = useState(0);
+  // let [modal, setModal] = useState(false);
+  let [modalCounter, setModalCounter] = useState(0);
 
   return (
     <div className='App'>
@@ -36,14 +38,20 @@ function App() {
         <p>6월 2일 발행</p>
       </div>
       <div className='list'>
-        <h4>{title[2]}</h4>
+        <h4
+          onClick={() => {
+            {
+              // setModal(true);
+              setModalCounter(modalCounter + 1);
+            }
+          }}
+        >
+          {title[2]}
+        </h4>
         <p>6월 2일 발행</p>
       </div>
-      <div className='modal'>
-        <h4>제목</h4>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div>
+      {/* {modal === true ? <Modal /> : null} */}
+      {modalCounter % 2 === 0 ? null : <Modal />}
       <button
         onClick={() => {
           let copyTitle = [...title];
@@ -65,5 +73,15 @@ function App() {
     </div>
   );
 }
+
+const Modal = () => {
+  return (
+    <div className='modal'>
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  );
+};
 
 export default App;
