@@ -35,7 +35,7 @@
   background: black;
   width: 100%;
   display: flex;
-  color: white;
+  color: skyblue;
   padding: 20px;
   font-weight: 600;
 }
@@ -46,6 +46,8 @@ div {
   text-align: left;
   padding-left: 20px;
   border-bottom: 1px solid grey;
+  display: flex;
+  flex-direction: row;
 }
 .likeClick {
   cursor: pointer;
@@ -58,4 +60,21 @@ div {
 }
 .list > h4 {
   cursor: pointer;
+}
+.infoGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+.infoGroup > span {
+  font-weight: 600;
+}
+.infoGroup > p {
+  margin-left: 10px;
+}
+button {
+  margin-top: 10px;
+  margin-right: 10px;
 }

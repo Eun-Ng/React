@@ -3,13 +3,12 @@ import './App.css';
 import {useState} from 'react';
 
 function App() {
-  const post = '강남 우동 맛집';
   let [title, titleChange] = useState([
     '깃허브 다루는 법',
     '타입스크립트 독학',
     '리액트 독학',
   ]);
-  let [like, likePlus] = useState(0);
+  let [like, likePlus] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
 
   return (
@@ -17,38 +16,37 @@ function App() {
       <div className='black-nav'>
         <div>React Blog</div>
       </div>
-      <div className='list'>
-        <h4>
-          {title[0]}{' '}
-          <span
-            class='likeClick'
-            onClick={() => {
-              likePlus(like + 1);
-            }}
-          >
-            👍🏻
-          </span>{' '}
-          {like}
-        </h4>
-        <p>6월 2일 발행</p>
-      </div>
-      <div className='list'>
-        <h4>{title[1]}</h4>
-        <p>6월 2일 발행</p>
-      </div>
-      <div className='list'>
-        <h4
-          onClick={() => {
-            {
-              setModal(!modal);
-            }
-          }}
-        >
-          {title[2]}
-        </h4>
-        <p>6월 2일 발행</p>
-      </div>
-      {modal === true ? <Modal /> : null}
+
+      {title.map((a, i) => {
+        return (
+          <div className='list' key={i}>
+            <h4
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              {title[i]}
+            </h4>
+            <div className='infoGroup'>
+              <span
+                className='likeClick'
+                onClick={() => {
+                  let copy = [...like];
+                  copy[i] = like[i] + 1;
+                  likePlus(copy);
+                }}
+              >
+                👍🏻 {like[i]}
+              </span>
+
+              <p>6월 2일 발행</p>
+            </div>
+          </div>
+        );
+      })}
+
+      {modal === true ? <Modal color={'skyblue'} title={title} /> : null}
+
       <button
         onClick={() => {
           let copyTitle = [...title];
@@ -71,12 +69,13 @@ function App() {
   );
 }
 
-const Modal = () => {
+const Modal = (props) => {
   return (
-    <div className='modal'>
-      <h4>제목</h4>
+    <div className='modal' style={{background: props.color}}>
+      <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button>글 수정</button>
     </div>
   );
 };
