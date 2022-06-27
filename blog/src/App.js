@@ -45,7 +45,9 @@ function App() {
         );
       })}
 
-      {modal === true ? <Modal color={'skyblue'} title={title} /> : null}
+      {modal === true ? (
+        <Modal title={title} titleChange={titleChange} />
+      ) : null}
 
       <button
         onClick={() => {
@@ -56,26 +58,25 @@ function App() {
       >
         정렬
       </button>
-      <button
-        onClick={() => {
-          let copyTitle = [...title];
-          copyTitle[0] = '깃허브로 협업하기';
-          titleChange(copyTitle);
-        }}
-      >
-        글 수정
-      </button>
     </div>
   );
 }
 
-const Modal = (props) => {
+const Modal = (props, titleChange) => {
   return (
-    <div className='modal' style={{background: props.color}}>
+    <div className='modal'>
       <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
-      <button>글 수정</button>
+      <button
+        onClick={() => {
+          let copyTitle = [...props.title];
+          copyTitle[0] = '깃허브로 협업하기';
+          props.titleChange(copyTitle);
+        }}
+      >
+        글 수정
+      </button>
     </div>
   );
 };
