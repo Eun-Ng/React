@@ -31,6 +31,9 @@
     transform: rotate(360deg);
   }
 }
+button {
+  cursor: pointer;
+}
 .black-nav {
   background: black;
   width: 100%;
@@ -53,7 +56,8 @@ div {
   cursor: pointer;
 }
 .modal {
-  background: skyblue;
+  background: #eee;
+  font-weight: 600;
   margin-top: 20px;
   padding: 20px;
   text-align: left;
@@ -74,7 +78,17 @@ div {
 .infoGroup > p {
   margin-left: 10px;
 }
-button {
+.delBtn {
+  height: 20px;
+  margin: auto;
+}
+.modal > button {
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 5px;
+}
+.inputGroup {
+  margin-top: 20px;
+}
+.inputGroup > button {
+  margin-left: 5px;
 }

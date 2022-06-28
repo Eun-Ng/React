@@ -10,6 +10,8 @@ function App() {
   ]);
   let [like, likePlus] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
+  let [nowTitle, setNowTitle] = useState(0);
+  let [inputVal, setInputVal] = useState('');
 
   return (
     <div className='App'>
@@ -23,6 +25,7 @@ function App() {
             <h4
               onClick={() => {
                 setModal(!modal);
+                setNowTitle(i);
               }}
             >
               {title[i]}
@@ -38,36 +41,57 @@ function App() {
               >
                 👍🏻 {like[i]}
               </span>
-
               <p>6월 2일 발행</p>
             </div>
+            <button
+              className='delBtn'
+              onClick={() => {
+                let copyTitle = [...title];
+                copyTitle.splice(i, 1);
+                titleChange(copyTitle);
+              }}
+            >
+              삭제
+            </button>
           </div>
         );
       })}
 
-      {modal === true ? (
-        <Modal title={title} titleChange={titleChange} />
-      ) : null}
+      <div className='inputGroup'>
+        <input
+          onChange={(e) => {
+            setInputVal(e.target.value);
+          }}
+        ></input>
+        <button
+          onClick={() => {
+            if (inputVal === '') {
+              alert('빈 제목은 불가능합니다!');
+            } else {
+              let copyTitle = [...title];
+              copyTitle.unshift(inputVal);
+              titleChange(copyTitle);
+            }
+          }}
+        >
+          글 추가
+        </button>
+      </div>
 
-      <button
-        onClick={() => {
-          let copyTitle = [...title];
-          copyTitle.sort();
-          titleChange(copyTitle);
-        }}
-      >
-        정렬
-      </button>
+      {modal === true ? (
+        <Modal title={title} nowTitle={nowTitle} titleChange={titleChange} />
+      ) : null}
     </div>
   );
 }
 
-const Modal = (props, titleChange) => {
+const Modal = (props) => {
   return (
     <div className='modal'>
-      <h4>{props.title[0]}</h4>
+      <h4>{props.title[props.nowTitle]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+
       <button
         onClick={() => {
           let copyTitle = [...props.title];
@@ -76,6 +100,15 @@ const Modal = (props, titleChange) => {
         }}
       >
         글 수정
+      </button>
+      <button
+        onClick={() => {
+          let copyTitle = [...props.title];
+          copyTitle.sort();
+          props.titleChange(copyTitle);
+        }}
+      >
+        글 정렬
       </button>
     </div>
   );
