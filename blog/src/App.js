@@ -12,6 +12,7 @@ function App() {
   let [modal, setModal] = useState(false);
   let [nowTitle, setNowTitle] = useState(0);
   let [inputVal, setInputVal] = useState('');
+  let [date, setDate] = useState([]);
 
   return (
     <div className='App'>
@@ -41,7 +42,7 @@ function App() {
               >
                 👍🏻 {like[i]}
               </span>
-              <p>6월 2일 발행</p>
+              <p class='date'>6월 2일 발행</p>
             </div>
             <button
               className='delBtn'
@@ -68,6 +69,17 @@ function App() {
             if (inputVal === '') {
               alert('빈 제목은 불가능합니다!');
             } else {
+              // 날짜 저장 로직
+              let nowDay = new Date();
+              let nowMonth = nowDay.getMonth() + 1;
+              let nowDate = nowDay.getDate();
+              let copyDate = [...date];
+              copyDate = [nowMonth, nowDate];
+              document.querySelector('.date').innerHTML = `
+                ${copyDate[0]}월 ${copyDate[1]}일 발행
+              `;
+              setDate(copyDate);
+
               let copyTitle = [...title];
               copyTitle.unshift(inputVal);
               titleChange(copyTitle);
