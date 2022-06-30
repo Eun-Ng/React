@@ -13,38 +13,33 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
       const root = document.getElementById('root');
-      const Title = (
-        <h3 id='title' onMouseEnter={() => console.log('mouser enter')}>
-          Hello I'm a title
-        </h3>
-      );
-      const Button = (
-        <button
-          style={{backgroundColor: 'tomato'}}
-          onClick={() => console.log('im clicked')}
-        >
-          Click me
-        </button>
-      );
 
-      /*
-      const h3 = React.createElement(
-        'h3',
-        {
-          onMouseEnter: () => console.log('mouser enter'),
-        },
-        "Hello I'm a title"
-      );
-      */
-      const btn = React.createElement(
-        'button',
-        {
-          onClick: () => console.log('im clicked'),
-        },
-        'Click me'
-      );
-      const container = React.createElement('div', null, [Title, Button]);
-      ReactDOM.render(container, root);
+      const App = () => {
+        const [minutes, setMinutes] = React.useState();
+        const [hours, setHours] = React.useState();
+        const onChange = (e) => {
+          setMinutes(e.target.value);
+        };
+
+        return (
+          <div>
+            <h1 className='hi'>Super Converter</h1>
+            <label htmlFor='minutes'>Minutes</label>
+            <input
+              value={minutes}
+              id='minutes'
+              placeholder='Minutes'
+              type='number'
+              onChange={onChange}
+            />
+            <h4>You want to convert {minutes}</h4>
+            <label htmlFor='hours'>Hours</label>
+            <input value={hours} id='hours' placeholder='Hours' type='number' />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, root);
     </script>
   </body>
 </html>
