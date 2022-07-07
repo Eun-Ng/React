@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 
@@ -21,6 +20,13 @@ function App() {
       </div>
 
       {title.map((a, i) => {
+        // 날짜
+        let nowDay = new Date();
+        let nowMonth = nowDay.getMonth() + 1;
+        let nowDate = nowDay.getDate();
+        let copyDate = [...date];
+        copyDate = [nowMonth, nowDate];
+
         return (
           <div className='list' key={i}>
             <h4
@@ -42,7 +48,9 @@ function App() {
               >
                 👍🏻 {like[i]}
               </span>
-              <p class='date'>6월 2일 발행</p>
+              <p className='date'>
+                {copyDate[0]}월 {copyDate[1]}일 발행
+              </p>
             </div>
             <button
               className='delBtn'
@@ -69,20 +77,15 @@ function App() {
             if (inputVal === '') {
               alert('빈 제목은 불가능합니다!');
             } else {
-              // 날짜 저장 로직
-              let nowDay = new Date();
-              let nowMonth = nowDay.getMonth() + 1;
-              let nowDate = nowDay.getDate();
-              let copyDate = [...date];
-              copyDate = [nowMonth, nowDate];
-              document.querySelector('.date').innerHTML = `
-                ${copyDate[0]}월 ${copyDate[1]}일 발행
-              `;
-              setDate(copyDate);
-
+              // 글 추가
               let copyTitle = [...title];
               copyTitle.unshift(inputVal);
               titleChange(copyTitle);
+
+              // 글 추가시 좋아요 요소 또한 추가
+              let copyLike = [...like];
+              copyLike.unshift(0);
+              likePlus(copyLike);
             }
           }}
         >
