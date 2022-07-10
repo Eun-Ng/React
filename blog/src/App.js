@@ -2,16 +2,16 @@ import './App.css';
 import {useState} from 'react';
 
 function App() {
-  let [title, titleChange] = useState([
+  const [title, titleChange] = useState([
     '깃허브 다루는 법',
     '타입스크립트 독학',
     '리액트 독학',
   ]);
-  let [like, likePlus] = useState([0, 0, 0]);
-  let [modal, setModal] = useState(false);
-  let [nowTitle, setNowTitle] = useState(0);
-  let [inputVal, setInputVal] = useState('');
-  let [date, setDate] = useState([]);
+  const [like, likePlus] = useState([0, 0, 0]);
+  const [modal, setModal] = useState(false);
+  const [nowTitle, setNowTitle] = useState(0);
+  const [inputVal, setInputVal] = useState('');
+  const [date, setDate] = useState([]);
 
   return (
     <div className='App'>
@@ -21,9 +21,9 @@ function App() {
 
       {title.map((a, i) => {
         // 날짜
-        let nowDay = new Date();
-        let nowMonth = nowDay.getMonth() + 1;
-        let nowDate = nowDay.getDate();
+        const nowDay = new Date();
+        const nowMonth = nowDay.getMonth() + 1;
+        const nowDate = nowDay.getDate();
         let copyDate = [...date];
         copyDate = [nowMonth, nowDate];
 
@@ -41,7 +41,7 @@ function App() {
               <span
                 className='likeClick'
                 onClick={() => {
-                  let copy = [...like];
+                  const copy = [...like];
                   copy[i] = like[i] + 1;
                   likePlus(copy);
                 }}
@@ -55,7 +55,7 @@ function App() {
             <button
               className='delBtn'
               onClick={() => {
-                let copyTitle = [...title];
+                const copyTitle = [...title];
                 copyTitle.splice(i, 1);
                 titleChange(copyTitle);
               }}
@@ -78,12 +78,12 @@ function App() {
               alert('빈 제목은 불가능합니다!');
             } else {
               // 글 추가
-              let copyTitle = [...title];
+              const copyTitle = [...title];
               copyTitle.unshift(inputVal);
               titleChange(copyTitle);
 
               // 글 추가시 좋아요 요소 또한 추가
-              let copyLike = [...like];
+              const copyLike = [...like];
               copyLike.unshift(0);
               likePlus(copyLike);
             }
@@ -109,7 +109,7 @@ const Modal = (props) => {
 
       <button
         onClick={() => {
-          let copyTitle = [...props.title];
+          const copyTitle = [...props.title];
           copyTitle[0] = '깃허브로 협업하기';
           props.titleChange(copyTitle);
         }}
@@ -118,7 +118,7 @@ const Modal = (props) => {
       </button>
       <button
         onClick={() => {
-          let copyTitle = [...props.title];
+          const copyTitle = [...props.title];
           copyTitle.sort();
           props.titleChange(copyTitle);
         }}
