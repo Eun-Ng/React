@@ -24,7 +24,7 @@ function App() {
       <Container>
         <Row>
           {shoes.map((a, i) => {
-            return <Cards shoes={shoes[i]} i={i + 1} key={i} />;
+            return <Cards shoes={shoes[i]} key={i} />;
           })}
         </Row>
       </Container>
@@ -32,15 +32,17 @@ function App() {
   );
 }
 
-const Cards = (props) => {
+const Cards = ({shoes}) => {
   return (
     <Col sm>
       <img
-        src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'}
+        src={
+          'https://codingapple1.github.io/shop/shoes' + (shoes.id + 1) + '.jpg'
+        }
       />
-      <h5>{props.shoes.title}</h5>
-      <p>{props.shoes.content}</p>
-      <p>{props.shoes.price}</p>
+      <h5>{shoes.title}</h5>
+      <p>{shoes.content}</p>
+      <p>{shoes.price}</p>
     </Col>
   );
 };
