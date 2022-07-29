@@ -49,6 +49,7 @@ function App() {
         <input type='submit' value='추가' />
       </form>
       {todoList?.map((todo) => (
+        // optional chaining
         <div key={todo.id} style={{display: 'flex'}}>
           <div>{todo.id}</div>
           <div>{todo.text}</div>
