@@ -13,3 +13,10 @@
 .row > .col-sm > img {
   width: 80%;
 }
+.me-auto > a {
+  margin-right: 10px;
+}
+.me-auto > .nav-link {
+  text-decoration: none;
+  color: black;
+}
