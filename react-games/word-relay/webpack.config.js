@@ -4,7 +4,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 module.exports = {
   name: 'word-relay-dev',
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'inline-source-map', // 개발시에는 eval
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -36,7 +36,7 @@ module.exports = {
   plugins: [new ReactRefreshWebpackPlugin()],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'app.js',
     publicPath: '/dist',
   },
   devServer: {
