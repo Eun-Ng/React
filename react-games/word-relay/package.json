@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "webpack serve --env development"
   },
-  "keywords": [],
   "author": "Eun-Ng",
   "license": "ISC",
   "dependencies": {
@@ -20,8 +19,8 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "babel-loader": "^8.1.0",
     "react-refresh": "^0.13.0",
-    "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^4.0.0"
   }
 }
