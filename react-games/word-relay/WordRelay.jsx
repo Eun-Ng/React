@@ -1,24 +1,42 @@
 const React = require('react');
-const {useState, useRef} = React;
+const {Component, useState, useRef} = React;
 
 const WordRelay = () => {
-  const Word = useState();
-  const Value = useState();
-  const Result = useState();
+  const [word, setWord] = useState('제로초');
+  const [value, setValue] = useState('');
+  const [result, setResult] = useState('');
+  const inputRef = useRef(null);
 
-  const OnSubmitForm = () => {};
-  const OnChange = () => {};
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    if (setWord[word.length - 1] === value[0]) {
+      set({
+        result: '딩동댕',
+        word: .value,
+        value: '',
+      });
+      input.focus();
+    } else {
+      setState({
+        result: '땡',
+        value: '',
+      });
+      input.focus();
+    }
+  };
 
-  const OnRefInput = () => {};
+  const onChangeInput = (e) => {
+    setValue(e.target.value);
+  };
 
   return (
     <>
-      <div>끝말잇기</div>
-      <form>
-        <input />
-        <button>입력</button>
+      <div>{word}</div>
+      <form onSubmit={onSubmitForm}>
+        <input ref={inputRef} value={value} onChange={onChangeInput} />
+        <button>클릭!</button>
       </form>
-      <div></div>
+      <div>{result}</div>
     </>
   );
 };
