@@ -1,13 +1,12 @@
-import React, {memo} from 'react';
+import React from 'react';
 
-const Try = memo(({tryInfo}) => {
+const Try = ({tryInfo}) => {
   return (
     <li>
-      <div>{tryInfo.try}</div>
+      s<div>{tryInfo.try}</div>
       <div>{tryInfo.result}</div>
     </li>
   );
-});
-Try.displayName = 'Try';
+};
 
 export default Try;
