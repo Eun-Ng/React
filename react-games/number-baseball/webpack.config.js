@@ -21,7 +21,7 @@ module.exports = {
             [
               '@babel/preset-env',
               {
-                targets: {browsers: ['last 2 chrome versions']},
+                targets: { browsers: ['last 2 chrome versions'] },
                 debug: true,
               },
             ],
@@ -40,8 +40,8 @@ module.exports = {
     publicPath: '/dist',
   },
   devServer: {
-    devMiddleware: {publicPath: '/dist'},
-    static: {directory: path.resolve(__dirname)},
+    devMiddleware: { publicPath: '/dist' },
+    static: { directory: path.resolve(__dirname) },
     hot: true,
   },
 };
